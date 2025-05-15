@@ -20,12 +20,14 @@ const resetBorders = () => {
 
 // red.addEventListener('click', function(event) {
 
+var isAlreadySelected = false;
 
 red.addEventListener('click', () => {
-    var isAlreadySelected = e.target;
     if(isAlreadySelected) {
         resetBorders();
         text.textContent = '色をクリックして選択してください';
+        text.style.color = 'black';
+        isAlreadySelected = false;
     } else {
         resetBorders();
         red.style.borderColor = 'black';
@@ -37,13 +39,14 @@ red.addEventListener('click', () => {
     }
 });
 
-blue.addEventListener('click', () => {
+blue.addEventListener('click', function(event) {
     resetBorders();
     blue.style.borderColor = 'black';
     blue.style.borderWidth = '4px';
     blue.style.borderStyle = 'ridge';
     text.textContent = '選択された色：青'
     text.style.color = 'blue';
+    console.log(event.isTrusted);
 });
 
 green.addEventListener('click', () => {
